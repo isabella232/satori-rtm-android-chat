@@ -34,10 +34,14 @@ android {
             debuggable true
         }
         release {
-            minifyEnabled false
+            debuggable false
+            minifyEnabled true
             buildConfigField "Boolean", "DEBUG_MODE", "false"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
     }
 }
 

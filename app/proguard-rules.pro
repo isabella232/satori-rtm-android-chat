@@ -1,17 +1,27 @@
-# Add project specific ProGuard rules here.
-# By default, the flags in this file are appended to flags specified
-# in /Users/avasenin/Downloads/android-sdk-macosx/tools/proguard/proguard-android.txt
-# You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# if you are using assembly with jackson2 library
+-dontwarn com.fasterxml.jackson.databind.**
+-keep class org.codehaus.**
+-keepnames class com.fasterxml.jackson.** { *; }
 
-# Add any project specific keep options here:
+# if you are using assemby with gson library
+-keep class sun.misc.Unsafe { *; }
+-keepattributes Signature, *Annotation*, EnclosingMethod
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# guava
+-dontwarn com.google.errorprone.annotations.**
+-dontwarn com.google.j2objc.annotations.**
+-dontwarn java.lang.ClassValue
+-dontwarn javax.annotation.**
+-dontwarn javax.inject.**
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+-dontwarn sun.misc.Unsafe
+-keep class com.google.j2objc.annotations.** { *; }
+-keep class java.lang.ClassValue { *; }
+-keep class org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement { *; }
+
+# slf4j
+-dontwarn org.slf4j.**
+
+# satori-rtm-sdk
+-keep class com.satori.rtm.connection.StaticJsonBinder { *; }
+-keep class com.satori.rtm.model.** { *; }
